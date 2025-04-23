@@ -4,28 +4,17 @@ library(tidyr)
 library(ggplot2)
 library(ggdist)
 library(dplyr)
+library(readr)
+library(lubridate)
+library(here)
 library(patchwork)
-library(praatpicture)
 library(showtext)
 
 font_add_google("Roboto Condensed", "Roboto")
 windowsFonts("Roboto Condensed" = windowsFont("Roboto Condensed"))
-
-html_tag_audio <- function(file, type = c("wav")) {
-  type <- match.arg(type)
-  htmltools::tags$audio(
-    controls = "",
-    htmltools::tags$source(
-      src = file,
-      type = glue::glue("audio/{type}", type = type)
-    )
-  )
-}
-
+theme_set(theme_ggdist())
 clrs <- c("#ea6212", "#ff001e", "#781478")
 ```
-
-
 
 
 ## Discrete units in the continuous speech signal
@@ -48,22 +37,7 @@ Newborns (and adults) preferentially parse the speech signal into [syllable-size
 - What makes syllables so special? 
 :::
 
-## Syllabic structure
 
-::: {.columns}
-::: {.column width="40%"}
-![](assets/structure.png)
-:::
-::: {.column width="60%"}
-:::
-:::
-
-::: {.notes}
-- The universal structure of a syllable is made of three elements
-- A mandatory nucleus: this is a high-sonority speech sound (predominantly a vowel)
-- Perhaps an onset, made of one or more consonants
-- Perhaps a coda, made of one or more consonant
-:::
 
 ## Syllabic structure
 
@@ -107,12 +81,6 @@ Newborns (and adults) preferentially parse the speech signal into [syllable-size
 
 ## Maximal Onset Principle (MOP)
 
-Can you chunk this word into syllables?
-
-> /likla/
-
-. . .
-
 ::: box
 
 Consonants are preferably grouped at syllabic onset
@@ -128,36 +96,84 @@ Consonants are preferably grouped at syllabic onset
 :::
 
 
-. . .
+## Are newborns sensitive to (violations of) the MOP?
 
-
-
-# Maximal Onset Principle (MOP)
-
-Research line 1
-
-## Study 1: are newborns sensitive to (violations of) the MOP?
+**fNIRS**: differential haemodynamic response^[Relative changes in concentration of oxy-hemoglobin (HbO) and deoxy-hemoglobin (HbR) across time.] to MOP+ and MOP- stimuli.
 
 ::: box
-Consonants are preferably grouped at syllable onset.
+**Hypothesis 1**: If newborns are sensitive to violations of the MOP, the haemodynamic responses to MOP+ and MOP- words should differ (morphology of the signal).
 :::
 
-* [MOP+]{style="background-color: #ea6212; color: white"}: CV.CCV - /li.kla/  
-* [MOP-]{style="background-color: #781478; color: white"}: CVC.CV - /lik.la/
+[mo.pla]{style="background-color: #ea6212; color: white"} $\neq$ [mop.la]{style="background-color: #781478; color: white"}
 
-::: {.notes}
-- The first universal we will investigate is the Maximal Onset Principle (MOP)
-- This principle states that "consonants" are preferably grouped at syllable onset
-- This principle constrains the position of syllabic boundaries
-- If neonates are sensitive to violations of the MOP, it would suggest that they might be using the MOP to syllabify the speech signal from birth
+## Are newborns sensitive to (violations of) the MOP?
+
+::: box
+**Hypothesis 2**: If newborns have an innate preference for MOP+ structures, the haemodynamic response to MOP+ words should be *greater* than for MOP- words (max. amplitude, AUC, time-to-peak). (?)
 :::
+
+[mo.pla]{style="background-color: #ea6212; color: white"} $\gt$ [mop.la]{style="background-color: #781478; color: white"}
+
+## Are newborns sensitive to (violations of) the MOP?
+
+::: box
+**Hypothesis 3**: If newborns discriminate between MOP+ and MOP- (Hypothesis 1), they do so by processing the disyllabic structure of the word (not just the first syllable).
+:::
+
+[mop.pla]{style="background-color: #781478; color: white"} $\neq$ [mop]{style="background-color: green; color: white"}
 
 
 ## Participants
 
-* Hearing, full term neonates (fNIRS) and 6-10 mo infants (fNIRS + behavioural)
-* Born/living in the Metropolitan Area of Barcelona (Spain)
-* Mostly Catalan and/or Spanish linguistic background
+```{r}
+#| label: import-paricipants
+participants <- read_csv2(here("data", "participants.csv"), show_col_types = FALSE) |>
+  mutate(date_test = as_date(date_test, format = "%Y-%m-%dT%H:%M"))
+```
+
+* Healthy, full term neonates.^[Last Apgar score $\geq$ 9, $\geq$ 37 gestation weeks, $\geq$ 2,700g birth weight.]
+* Born at the Àrea de Maternitat form Hospital Sant Joan de Déu (Barcelona), tested in their room.
+
+```{r}
+#| label: fig-participants
+#| fig-cap: Participant information.
+#| fig-width: 7
+#| fig-height: 2
+
+get_age_hours <- function(months, days, hours, minutes) {
+  min_h <- ifelse(is.na(minutes), 0, minutes / 60)
+  day_h <- ifelse(is.na(days), 0, days * 24)
+  mon_h <- ifelse(is.na(months), 0, months * 24 * 30.345)
+  return(mon_h + day_h + hours + min_h)
+}
+
+participants_plot_data <- read_csv2(here("data", "participants.csv"), show_col_types = FALSE) |>
+  filter(!(is.na(age_months) & !is.na(age_days) & !is.na(age_hours) & !is.na(age_min))) |>
+  mutate(
+    age = get_age_hours(age_months, age_days, age_hours, age_min),
+    across(c(age_hours, gest_weeks), floor)
+  )
+
+
+ggplot(participants_plot_data, aes(age)) +
+  geom_dots(layout = "weave", na.rm = TRUE, fill = clrs[1], colour = "white") +
+  geom_vline(xintercept = mean(participants_plot_data$age, na.rm = TRUE, colour = "black", linewidth = 2)) +
+  labs(title = "Age (hours)") +
+  ggplot(participants_plot_data, aes(birth_weight)) +
+  geom_dots(layout = "weave", na.rm = TRUE, fill = clrs[1], colour = "white") +
+  geom_vline(xintercept = mean(participants_plot_data$birth_weight, na.rm = TRUE, colour = "black", linewidth = 2)) +
+  labs(title = "Birth weight (g)") +
+  ggplot(participants_plot_data, aes(gest_weeks)) +
+  geom_dots(na.rm = TRUE, fill = clrs[1], colour = "white") +
+  geom_vline(xintercept = mean(participants_plot_data$gest_weeks, na.rm = TRUE, colour = "black", linewidth = 2)) +
+  labs(title = "Gestation weeks") &
+  plot_layout() &
+  theme(
+    axis.text.y = element_blank(),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank()
+  )
+```
 
 ::: {.notes}
 - We will run an experimental series that involves neonates and infants
@@ -167,20 +183,30 @@ Consonants are preferably grouped at syllable onset.
 - Most of our participants will have a Catalan and/or Spanish background
 :::
 
+## Participants
 
-## fNIRS setup
+```{r}
+pilot_dates <- participants |>
+  summarise(
+    across(where(is.Date), list(min, max), .names = "{.col}_{.fn}"),
+    .by = pilot
+  )
+excluded <- participants |>
+  filter(!pilot, !include) |>
+  mutate(
+    exc_crying = grepl("crying", tolower(comments)),
+    exc_capping = grepl("bad capping", tolower(comments))
+  ) |>
+  summarise(across(starts_with("exc_"), sum))
+```
 
-* NIRSport2 (NIRx), CW 760 nm & 850 nm
-* Sampling frequency 20.345 Hz (~0.05 s samples)
-* NIRScap: 8 channels LH, 8 channels RH
-* ROIs: L and R temporal regions
-* Crib testing in neonates, parents' lap in infants (watching cartoons)
-* MNE-NIRS (Python): (1) OD, (2) motion correction (TDDR), (3) band-pass filtering, (4) block segmentation, (5) block averaging, (6) block rejection, (7) participant rejection.
+* **Pilot** (`r pilot_dates$date_test_1[1]`--`r pilot_dates$date_test_2[1]`): `r sum(participants$pilot, na.rm = TRUE)`: Participants.
+* **Experiment** (`r pilot_dates$date_test_1[1]`--now): `r sum(!participants$pilot)`.
+    - Excluded (< 10 min.): `r excluded$exc_crying` crying, `r excluded$exc_capping` bad capping.
+    - Provided valid data: `r sum(!participants$pilot & participants$include)`
+    - Data quality ranges a lot between participants
 
-## Block design
-
-![](assets/design.png)
-
+## Testing setup and procedure
 
 ## Stimuli
 
@@ -188,8 +214,65 @@ Consonants are preferably grouped at syllable onset.
 **CVCCV words**: Onset + Vowel + Consonant cluster (CC) + Vowel
 :::
 
+| **List**   | **Syllabification** | **Words**                      |
+|------------|---------------------|--------------------------------|
+| List 1     | ST (CV-CCV)         | MO-PLA, SA-KLO, TI-PLE, DE-KLI | 
+|            | DW (CVC-CV)         | MOP-LA, SAK-LO, TIP-LE, DEK-LI | 
+|            | DS (CVC)            | MOP, SAK, TIP, DEK             |
+| List 2     | ST (CV-CCV)         | MO-KLA, SA-PLO, TI-KLE, DE-PLI |
+|            | DW (CVC-CV)         | MOK-LA, SAP-LO, TIK-LE, DEP-LI |
+|            | DS (CVC)            | MOK, SAP, TIK, DEP             |
+: Stimuli lists. {#tbl-stimuli}
+
+
+## Block design
+
+![](assets/design.png)
+
+
+
+
+## Data analysis
+
+MNE-NIRS (Python):
+
+1) Light intensity to **optical density**
+2) Automatic **channel rejection** based (SCI $\geq$ .80)
+3) **Motion arctifact correction** (TDDR)
+4) Calculate **$\Delta$HbO and $\Delta$**HbO using the modified Beer-Lambert Law
+5) Band-pass **filter** (0.01-1.0 Hz)
+6) **Block epoching** (-5--30s), baseline correction, linear detrend
+7) **Block averaging**
+8) **Participant rejection** ($geq$ 2 trials per condition)
+
+# Results
+
+![](assets/evoked-condition.png)
+
+# Results
+
+![](assets/evoked-chromo.png)
+
+# Results
+
+![](assets/evoked-topo-hbo.png)
+
+# Results
+
+![](assets/evoked-spatial.png)
+
+
+
 
 ## {background-image="assets/thanks.png"}
+
+# Appendix
+
+## NIRS setup
+
+* NIRSport2 (NIRx), CW 760 nm & 850 nm
+* Sampling frequency 20.345 Hz (~0.05 s samples)
+* NIRScap: 8 channels LH, 8 channels RH
 
 ## References
 

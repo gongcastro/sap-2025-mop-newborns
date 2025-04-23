@@ -40,7 +40,7 @@ child_id;apt_id;pilot;include;date_test;stim_list;sex;age_months;age_days;age_ho
 41;174_1;False;False;2025-04-02T15:00;34_2;Male;0;0;21;20;41;3090;36;36;Eutocic;9;9;10;Spanish;80;English;20;None;0;None;0;2025-04-02_001;Crying. Partial data. Second capping attempt.
 42;178_1;False;True;2025-04-02T16:00;35_1;Female;0;0;18;42;41;3350;36;36;C-section;9;10;10;Spanish;70;English;30;None;0;None;0;2025-04-02_004;Crying. Partial data. Good capping. Moving.
 43;176_1;False;True;2025-04-02T17:00;36_2;Male;0;1;0;21;39;3510;34;34;Eutocic;9;9;10;Spanish;60;Catalan;40;None;0;None;0;2025-04-02_005;Good capping. Sucking. Pause.
-44;180_1;False;True;2024-04-04T15:00;37_1;Male;0;0;13;56;39;3145;32;32;Eutocic;8;10;10;Spanish;50;Catalan;50;None;0;None;0;2025-04-04_001;Good capping. Wind noise.
+44;180_1;False;True;2025-04-04T15:00;37_1;Male;0;0;13;56;39;3145;32;32;Eutocic;8;10;10;Spanish;50;Catalan;50;None;0;None;0;2025-04-04_001;Good capping. Wind noise.
 45;181_1;False;True;2025-04-04T16:00;38_2;Male;0;1;13;55;41;3225;35.5;34;Eutocic;9;10;10;Catalan;100;None;0;None;0;None;0;2025-04-04_005;Bad capping. Breasfeeding. Cring. Partial data.
 46;182_1;False;True;2025-04-04T17:00;39_1;Male;0;1;7;12;40;3250;34;34;Eutocic;9;9;10;Catalan;40;Spanish;40;English;20;None;0;2025-04-04_006;Good capping. Crying. Partial data.
 47;188_1;False;True;2025-04-07T15:00;40_2;Male;0;1;0;3;39;3445;34;34;Eutocic;6;8;10;Catalan;50;Spanish;50;None;0;None;0;2025-04-07_001;Good capping. Pause.
