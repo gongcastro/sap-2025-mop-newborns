@@ -1,0 +1,64 @@
+<section id="$idprefix$title-slide" $for(title-slide-attributes/pairs)$ $it.key$="$it.value$" $endfor$
+  class="quarto-title-block">
+  <h1 class="title">$title$</h1>
+  $if(subtitle)$
+  <p class="subtitle">$subtitle$</p>
+  $endif$
+  <br>
+  <div id="rectangle"></div>
+
+  <br>
+
+  <div>
+    <div class="quarto-title-authors">
+      $for(by-author)$
+      <div class="quarto-title-author">
+        <div class="quarto-title-author-name">
+          $if(by-author.url)$$by-author.url$$endif$
+          $if(by-author.name.literal)$$by-author.name.literal$$endif$
+          $if(by-author.url)$$endif$
+          <br>
+        </div>
+        $if(by-author.affiliations)$
+        $for(by-author.affiliations)$
+        <p class="quarto-title-affiliation">
+          $if(it.url)$<a href="$it.url$"></a>$endif$
+          $it.name$
+        </p>
+        $endfor$
+        $endif$
+      </div>
+      $endfor$
+    </div>
+    $if(conference)$
+    <div class="conference">
+      <p>$conference$$if(date)$ | $date$</p>$endif$
+    </div>
+    $endif$
+    <div class="media-icon" right="0">
+      $if(twitter)$
+      <a href="https://twitter.com/$twitter$">
+        <img src="logo-twitter.png">
+        <p>$twitter$</p>
+      </a>
+      $endif$
+      <br>
+      $if(github)$
+      <a href="https://github.com/$github$">
+        <img src="logo-github.png">
+        <p>$github$</p>
+      </a>
+      $endif$
+    </div>
+  </div>
+  <div>
+    $if(affiliation-logo)$
+    <div class="affiliation-logo">
+      $for(affiliation-logo)$
+      <img src=$affiliation-logo$>
+      $endfor$
+    </div>
+    $endif$
+  </div>
+
+</section>

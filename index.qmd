@@ -1,0 +1,196 @@
+```{r setup}
+library(tibble)
+library(tidyr)
+library(ggplot2)
+library(ggdist)
+library(dplyr)
+library(patchwork)
+library(praatpicture)
+library(showtext)
+
+font_add_google("Roboto Condensed", "Roboto")
+windowsFonts("Roboto Condensed" = windowsFont("Roboto Condensed"))
+
+html_tag_audio <- function(file, type = c("wav")) {
+  type <- match.arg(type)
+  htmltools::tags$audio(
+    controls = "",
+    htmltools::tags$source(
+      src = file,
+      type = glue::glue("audio/{type}", type = type)
+    )
+  )
+}
+
+clrs <- c("#ea6212", "#ff001e", "#781478")
+```
+
+
+
+
+## Discrete units in the continuous speech signal
+
+![From @meyer2018neural.](assets/multilevel.jpg)
+
+::: {.notes}
+- We are focusing on one of the first and most critical steps in language acquisition: chunking the continuous speech stream into discrete, linguistically relevant units.
+:::
+
+## The syllable: a privileged linguistic unit?
+
+Newborns (and adults) preferentially parse the speech signal into [syllable-sized units]{style="background-color: #e3e1e1;"} [e.g, @bijeljac19934; @flo2022sleeping; @luo2007phase; @jusczyk1987representation; @bertoncini1988investigation]
+
+![From @flo2022sleeping.](assets/entrainment.png)
+
+::: {.notes}
+- Syllables seem to be specially important during the first stages of language acquisition
+- Newborns preferentially parse speech into syllables (as opposed to individual phonemes, words, or phrases)
+- What makes syllables so special? 
+:::
+
+## Syllabic structure
+
+::: {.columns}
+::: {.column width="40%"}
+![](assets/structure.png)
+:::
+::: {.column width="60%"}
+:::
+:::
+
+::: {.notes}
+- The universal structure of a syllable is made of three elements
+- A mandatory nucleus: this is a high-sonority speech sound (predominantly a vowel)
+- Perhaps an onset, made of one or more consonants
+- Perhaps a coda, made of one or more consonant
+:::
+
+## Syllabic structure
+
+::: {.columns}
+::: {.column width="40%"}
+![](assets/structure.png)
+:::
+::: {.column width="60%"}
+|Structure |Onset  |Nucleus  |Coda  |
+|----------|:-----:|:-------:|:----:|
+| V        |       |a        |      |
+| CV       | t     |a        |      |
+| CVC      | t     |a        |n     |
+| VC       |       |a        |n     |
+:::
+:::
+
+::: {.notes}
+- Same examples of syllables
+:::
+
+
+## Language-specific constraints to syllabic structure
+
+| Structure | Japanese     | Spanish          | English         |
+|-----------|--------------|------------------|-----------------|
+|V          | [u]{style="background-color: #e3e1e1;"}.mi     | [o]{style="background-color: #e3e1e1;"}.jo         | [a]{style="background-color: #e3e1e1;"}.ny        |
+|CV         | [ya]{style="background-color: #e3e1e1;"}.ma.ha | [ca]{style="background-color: #e3e1e1;"}.sa        | [fai]{style="background-color: #e3e1e1;"}.ry      | 
+|CVC        | [hon]{style="background-color: #e3e1e1;"}.da   | [rin]{style="background-color: #e3e1e1;"}.cón      | [con]{style="background-color: #e3e1e1;"}.trol    |
+|CCVC       |              | [fres]{style="background-color: #e3e1e1;"}.co      | [fresh]{style="background-color: #e3e1e1;"}       |
+|CCVCC      |              | [trans]{style="background-color: #e3e1e1;"}.por.te | [shrink]{style="background-color: #e3e1e1;"}     |
+|CCCVCCC    |              |                  | [strengths]{style="background-color: #e3e1e1;"}   |
+
+: Adapted from Özer (2024).
+
+::: {.notes}
+- Not all syllabic structures are possible in all languages
+- Some languages impose stricter phonotactical constraints on the specific sounds and number of sounds that can occur at onset or coda
+:::
+
+
+## Maximal Onset Principle (MOP)
+
+Can you chunk this word into syllables?
+
+> /likla/
+
+. . .
+
+::: box
+
+Consonants are preferably grouped at syllabic onset
+:::
+
+* [MOP+]{style="background-color: #ea6212; color: white"}: CV.CCV - /mo.pla/
+* [MOP-]{style="background-color: #781478; color: white"}: CVC.CV - /mop.la/
+
+::: {.notes}
+- However, some constraints to syllabic structure seem to be universal
+- Universal: most, if not all languages, show a preference for following some specific constraints
+- The aim of this project is to investigate the possible role of these universals as an early mechanism for syllabification
+:::
+
+
+. . .
+
+
+
+# Maximal Onset Principle (MOP)
+
+Research line 1
+
+## Study 1: are newborns sensitive to (violations of) the MOP?
+
+::: box
+Consonants are preferably grouped at syllable onset.
+:::
+
+* [MOP+]{style="background-color: #ea6212; color: white"}: CV.CCV - /li.kla/  
+* [MOP-]{style="background-color: #781478; color: white"}: CVC.CV - /lik.la/
+
+::: {.notes}
+- The first universal we will investigate is the Maximal Onset Principle (MOP)
+- This principle states that "consonants" are preferably grouped at syllable onset
+- This principle constrains the position of syllabic boundaries
+- If neonates are sensitive to violations of the MOP, it would suggest that they might be using the MOP to syllabify the speech signal from birth
+:::
+
+
+## Participants
+
+* Hearing, full term neonates (fNIRS) and 6-10 mo infants (fNIRS + behavioural)
+* Born/living in the Metropolitan Area of Barcelona (Spain)
+* Mostly Catalan and/or Spanish linguistic background
+
+::: {.notes}
+- We will run an experimental series that involves neonates and infants
+- Neonates will be tested using fNIRS, while infants will be tested using fNIRS and behavioural tasks (like the HeadTurn Preference Procedure)
+- I will focus on the fNIRS testing of neonates and infants, as they follow the same task design
+- Ideally, we'd like to test up to 50 participants per experiment, although power analysis is pending
+- Most of our participants will have a Catalan and/or Spanish background
+:::
+
+
+## fNIRS setup
+
+* NIRSport2 (NIRx), CW 760 nm & 850 nm
+* Sampling frequency 20.345 Hz (~0.05 s samples)
+* NIRScap: 8 channels LH, 8 channels RH
+* ROIs: L and R temporal regions
+* Crib testing in neonates, parents' lap in infants (watching cartoons)
+* MNE-NIRS (Python): (1) OD, (2) motion correction (TDDR), (3) band-pass filtering, (4) block segmentation, (5) block averaging, (6) block rejection, (7) participant rejection.
+
+## Block design
+
+![](assets/design.png)
+
+
+## Stimuli
+
+::: box
+**CVCCV words**: Onset + Vowel + Consonant cluster (CC) + Vowel
+:::
+
+
+## {background-image="assets/thanks.png"}
+
+## References
+
+

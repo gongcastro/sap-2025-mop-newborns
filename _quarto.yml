@@ -1,0 +1,31 @@
+title: "Maximal Onset Principle as a cue for syllable detection at birth"
+format:
+  prezconf-revealjs:
+    self-contained: true
+    from: markdown+emoji
+    transition: fade
+    progress: true
+    preload-iframes: true
+    link-external-newwindow: true
+    #qr-code: assets/img/qr-code.png
+    github: gongcastro
+    twitter: gongcastro
+
+  pptx: default
+
+author:
+  - name: "Gonzalo García-Castro"
+    orcid: 0000-0002-8553-4209
+    institute: "Neurodevelopment and Comparative Cognition group"
+
+echo: false
+warning: false
+fig-dpi: 800
+
+bibliography: assets/references.bib
+cls: assets/apa7.csl
+scrollable: true
+show-slide-number: all
+slide-number: c
+date: "24/09/2024"
+conference: sap2024-mop-newborns
