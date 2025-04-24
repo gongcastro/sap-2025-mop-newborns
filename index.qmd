@@ -13,11 +13,12 @@ library(showtext)
 font_add_google("Roboto Condensed", "Roboto")
 windowsFonts("Roboto Condensed" = windowsFont("Roboto Condensed"))
 theme_set(theme_ggdist())
-clrs <- c("#ea6212", "#ff001e", "#781478")
+clrs <- c("#5778a4", "#ff001e", "#e49444")
+clrs_2 <- c("blue" = "#5778a4", "red" = "#e49444", "green" = "#6a9f58")
 ```
 
 
-## Discrete units in the continuous speech signal
+## Continuous speech, discrete units
 
 ![From @meyer2018neural.](assets/multilevel.jpg)
 
@@ -27,7 +28,7 @@ clrs <- c("#ea6212", "#ff001e", "#781478")
 
 ## The syllable: a privileged linguistic unit?
 
-Newborns (and adults) preferentially parse the speech signal into [syllable-sized units]{style="background-color: #e3e1e1;"} [e.g, @bijeljac19934; @flo2022sleeping; @luo2007phase; @jusczyk1987representation; @bertoncini1988investigation]
+Newborns (and adults) preferentially parse the speech signal into [syllable-sized units]{style="background-color: #e3e1e1;"} [e.g., @bijeljac19934; @flo2022sleeping; @luo2007phase; @jusczyk1987representation; @bertoncini1988investigation]
 
 ![From @flo2022sleeping.](assets/entrainment.png)
 
@@ -71,7 +72,6 @@ Newborns (and adults) preferentially parse the speech signal into [syllable-size
 |CCVCC      |              | [trans]{style="background-color: #e3e1e1;"}.por.te | [shrink]{style="background-color: #e3e1e1;"}     |
 |CCCVCCC    |              |                  | [strengths]{style="background-color: #e3e1e1;"}   |
 
-: Adapted from Özer (2024).
 
 ::: {.notes}
 - Not all syllabic structures are possible in all languages
@@ -86,8 +86,8 @@ Newborns (and adults) preferentially parse the speech signal into [syllable-size
 Consonants are preferably grouped at syllabic onset
 :::
 
-* [MOP+]{style="background-color: #ea6212; color: white"}: CV.CCV - /mo.pla/
-* [MOP-]{style="background-color: #781478; color: white"}: CVC.CV - /mop.la/
+* [MOP+]{style="background-color: #5778a4; color: white"}: CV.CCV - /mo.pla/
+* [MOP-]{style="background-color: #e49444; color: white"}: CVC.CV - /mop.la/
 
 ::: {.notes}
 - However, some constraints to syllabic structure seem to be universal
@@ -104,7 +104,7 @@ Consonants are preferably grouped at syllabic onset
 **Hypothesis 1**: If newborns are sensitive to violations of the MOP, the haemodynamic responses to MOP+ and MOP- words should differ (morphology of the signal).
 :::
 
-[mo.pla]{style="background-color: #ea6212; color: white"} $\neq$ [mop.la]{style="background-color: #781478; color: white"}
+[mo.pla]{style="background-color: #5778a4; color: white"} $\neq$ [mop.la]{style="background-color: #e49444; color: white"}
 
 ## Are newborns sensitive to (violations of) the MOP?
 
@@ -112,7 +112,7 @@ Consonants are preferably grouped at syllabic onset
 **Hypothesis 2**: If newborns have an innate preference for MOP+ structures, the haemodynamic response to MOP+ words should be *greater* than for MOP- words (max. amplitude, AUC, time-to-peak). (?)
 :::
 
-[mo.pla]{style="background-color: #ea6212; color: white"} $\gt$ [mop.la]{style="background-color: #781478; color: white"}
+[mo.pla]{style="background-color: #5778a4; color: white"} $\gt$ [mop.la]{style="background-color: #e49444; color: white"}
 
 ## Are newborns sensitive to (violations of) the MOP?
 
@@ -120,7 +120,7 @@ Consonants are preferably grouped at syllabic onset
 **Hypothesis 3**: If newborns discriminate between MOP+ and MOP- (Hypothesis 1), they do so by processing the disyllabic structure of the word (not just the first syllable).
 :::
 
-[mop.pla]{style="background-color: #781478; color: white"} $\neq$ [mop]{style="background-color: green; color: white"}
+[mop.pla]{style="background-color: #e49444; color: white"} $\neq$ [mop]{style="background-color: #6a9f58; color: white"}
 
 
 ## Participants
@@ -210,26 +210,28 @@ excluded <- participants |>
 
 ## Stimuli
 
-::: box
 **CVCCV words**: Onset + Vowel + Consonant cluster (CC) + Vowel
-:::
 
 | **List**   | **Syllabification** | **Words**                      |
 |------------|---------------------|--------------------------------|
-| List 1     | ST (CV-CCV)         | MO-PLA, SA-KLO, TI-PLE, DE-KLI | 
-|            | DW (CVC-CV)         | MOP-LA, SAK-LO, TIP-LE, DEK-LI | 
-|            | DS (CVC)            | MOP, SAK, TIP, DEK             |
-| List 2     | ST (CV-CCV)         | MO-KLA, SA-PLO, TI-KLE, DE-PLI |
-|            | DW (CVC-CV)         | MOK-LA, SAP-LO, TIK-LE, DEP-LI |
-|            | DS (CVC)            | MOK, SAP, TIK, DEP             |
+| List 1     | [ST (CV-CCV)]{style="background-color: #5778a4; color: white"}         | MO-PLA, SA-KLO, TI-PLE, DE-KLI | 
+|            | [DW (CVC-CV)]{style="background-color: #e49444; color: white"}         | MOP-LA, SAK-LO, TIP-LE, DEK-LI | 
+|            | [DS (CVC)]{style="background-color: #6a9f58; color: white"}            | MOP, SAK, TIP, DEK             |
+| List 2     | [ST (CV-CCV)]{style="background-color: #5778a4; color: white"}         | MO-KLA, SA-PLO, TI-KLE, DE-PLI |
+|            | [DW (CVC-CV)]{style="background-color: #e49444; color: white"}         | MOK-LA, SAP-LO, TIK-LE, DEP-LI |
+|            | [DS (CVC)]{style="background-color: #6a9f58; color: white"}            | MOK, SAP, TIK, DEP             |
 : Stimuli lists. {#tbl-stimuli}
 
+## Stimuli
+
+* Synthesised using MBROLA  (`it4` voice) (*pymbrola* Python package)
+* 25 ms pause between syllables
+* Constant prosody: 200 Hz F0
+* Manually removed offset voicing from CVC syllables (Praat)
 
 ## Block design
 
-![](assets/design.png)
-
-
+![](assets/design.jpg)
 
 
 ## Data analysis
@@ -239,30 +241,56 @@ MNE-NIRS (Python):
 1) Light intensity to **optical density**
 2) Automatic **channel rejection** based (SCI $\geq$ .80)
 3) **Motion arctifact correction** (TDDR)
-4) Calculate **$\Delta$HbO and $\Delta$**HbO using the modified Beer-Lambert Law
+4) Calculate **$\Delta$HbO and $\Delta$HbO** using the modified Beer-Lambert Law
 5) Band-pass **filter** (0.01-1.0 Hz)
-6) **Block epoching** (-5--30s), baseline correction, linear detrend
+6) **Block epoching** (-5 to 30 seconds), baseline correction, linear detrend
 7) **Block averaging**
-8) **Participant rejection** ($geq$ 2 trials per condition)
+8) **Participant rejection** ($\geq$ 2 trials per condition)
 
 # Results
 
+Haemodynamic response averaged across blocks, channels, and participants.
+
+[HbO]{style="background-color: #d1615d; color: white"} [HbR]{style="background-color: #5778a4; color: white"}
 ![](assets/evoked-condition.png)
 
 # Results
 
+Haemodynamic response averaged across blocks, channels, and participants.
+
+[ST]{style="background-color: #5778a4; color: white"} [DW]{style="background-color: #e49444; color: white"} [DS]{style="background-color: #6a9f58; color: white"}
 ![](assets/evoked-chromo.png)
 
 # Results
+
+Haemodynamic response averaged across blocks and participants.
 
 ![](assets/evoked-topo-hbo.png)
 
 # Results
 
+Haemodynamic response averaged across blocks and participants.
+
 ![](assets/evoked-spatial.png)
 
 
+# Discussion
 
+So far:
+
+* Testing protocol done
+* fNIRS setup up and running
+* Data processing pipeline almost ready
+
+# Discussion
+
+Next steps:
+
+* Finish data collection: 30-40 participants.
+* Statistical modelling:
+  - Time-domain analysis: Cluster-based permutation testing
+  - Waveform analysis: Bayesian GAMMs
+  - Summary statistics: Peak amplitude, AUC, time-to-peak
 
 ## {background-image="assets/thanks.png"}
 

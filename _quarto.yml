@@ -9,7 +9,6 @@ format:
     link-external-newwindow: true
     #qr-code: assets/img/qr-code.png
     github: gongcastro
-    twitter: gongcastro
 
   pptx: default
 
@@ -27,5 +26,5 @@ cls: assets/apa7.csl
 scrollable: true
 show-slide-number: all
 slide-number: c
-date: "24/09/2024"
-conference: sap2024-mop-newborns
+date: "2025-04-29"
+conference: sap2025-mop-newborns
