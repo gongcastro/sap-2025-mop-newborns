@@ -1,3 +1,9 @@
+project:
+  preview:
+    port: 4000
+    browser: true
+  output-dir: docs
+
 title: "Maximal Onset Principle as a cue for syllable detection at birth"
 format:
   prezconf-revealjs:
@@ -10,7 +16,6 @@ format:
     #qr-code: assets/img/qr-code.png
     github: gongcastro
     twitter: gongcastro
-
   pptx: default
 
 author:
