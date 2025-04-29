@@ -315,7 +315,7 @@ excluded <- participants |>
 * **Experiment** (`r pilot_dates$date_test_1[1]`--now): `r sum(!participants$pilot)`.
     - Excluded (< 10 min.): `r excluded$exc_crying` crying, `r excluded$exc_capping` bad capping.
     - Provided valid data (>= 2 blocks per condition): `r sum(!participants$pilot & participants$include)-1`
-    - Presenting 
+    - Presenting data from 
 
 
 ```{r}
