@@ -20,7 +20,7 @@ clrs_2 <- c("blue" = "#5778a4", "red" = "#e49444", "green" = "#6a9f58")
 
 ## Continuous speech, discrete units
 
-![From @meyer2018neural.](assets/multilevel.jpg)
+![From @meyer2018neural.](img/multilevel.jpg)
 
 ::: {.notes}
 - We are focusing on one of the first and most critical steps in language acquisition: chunking the continuous speech stream into discrete, linguistically relevant units.
@@ -28,9 +28,11 @@ clrs_2 <- c("blue" = "#5778a4", "red" = "#e49444", "green" = "#6a9f58")
 
 ## The syllable: a privileged linguistic unit?
 
-Newborns (and adults) preferentially parse the speech signal into [syllable-sized units]{style="background-color: #e3e1e1;"} [e.g., @bijeljac19934; @flo2022sleeping; @luo2007phase; @jusczyk1987representation; @bertoncini1988investigation]
+Newborns (and adults) preferentially chunk the speech signal into [syllable-sized units]{style="background-color: #e3e1e1;"} [e.g., @bijeljac19934; @flo2022sleeping; @luo2007phase; @jusczyk1987representation; @bertoncini1988investigation]
 
-![From @flo2022sleeping.](assets/entrainment.png)
+Pre-term infants (28-32 gestational weeks) discriminate different syllables [@mahmoudzadeh2013syllabic]
+
+![From @flo2022sleeping.](img/entrainment.png)
 
 ::: {.notes}
 - Syllables seem to be specially important during the first stages of language acquisition
@@ -42,19 +44,14 @@ Newborns (and adults) preferentially parse the speech signal into [syllable-size
 
 ## Syllabic structure
 
-::: {.columns}
-::: {.column width="40%"}
-![](assets/structure.png)
-:::
-::: {.column width="60%"}
+
 |Structure |Onset  |Nucleus  |Coda  |
 |----------|:-----:|:-------:|:----:|
 | V        |       |a        |      |
 | CV       | t     |a        |      |
 | CVC      | t     |a        |n     |
 | VC       |       |a        |n     |
-:::
-:::
+
 
 ::: {.notes}
 - Same examples of syllables
@@ -81,13 +78,17 @@ Newborns (and adults) preferentially parse the speech signal into [syllable-size
 
 ## Maximal Onset Principle (MOP)
 
+Linguistic universal
+: Consonants are preferably grouped at syllabic onset
+
+<br>
+
+* MOP following ([MOP+]{style="background-color: #5778a4; color: white"}: CV.CCV - /mo.pla/)
+* MOP violating ([MOP-]{style="background-color: #e49444; color: white"}: CVC.CV - /mop.la/)
+
 ::: box
-
-Consonants are preferably grouped at syllabic onset
+Is the MOP an available **mechanism for detecting syllables at birth**?
 :::
-
-* [MOP+]{style="background-color: #5778a4; color: white"}: CV.CCV - /mo.pla/
-* [MOP-]{style="background-color: #e49444; color: white"}: CVC.CV - /mop.la/
 
 ::: {.notes}
 - However, some constraints to syllabic structure seem to be universal
@@ -96,9 +97,17 @@ Consonants are preferably grouped at syllabic onset
 :::
 
 
-## Are newborns sensitive to (violations of) the MOP?
 
-**fNIRS**: differential haemodynamic response^[Relative changes in concentration of oxy-hemoglobin (HbO) and deoxy-hemoglobin (HbR) across time.] to MOP+ and MOP- stimuli.
+## The present study
+
+Functional nea-infrared light spoctroscopy (**fNIRS**):
+
+- Relative changes in concentration of oxy-hemoglobin ($\Delta$HbO) and deoxy-hemoglobin ($\Delta$HbR) across time (haemodynamic response)
+- Indirect measure of neural activity, mostly in the cortex
+
+![From @luke2021analysis](img/luke2021.png)
+
+## The present study
 
 ::: box
 **Hypothesis 1**: If newborns are sensitive to violations of the MOP, the haemodynamic responses to MOP+ and MOP- words should differ (morphology of the signal).
@@ -116,11 +125,68 @@ Consonants are preferably grouped at syllabic onset
 
 ## Are newborns sensitive to (violations of) the MOP?
 
+In some experimental paradigms, newborns exclusively rely on 1st syllables [@flo2022sleeping]
+
 ::: box
 **Hypothesis 3**: If newborns discriminate between MOP+ and MOP- (Hypothesis 1), they do so by processing the disyllabic structure of the word (not just the first syllable).
 :::
 
 [mop.pla]{style="background-color: #e49444; color: white"} $\neq$ [mop]{style="background-color: #6a9f58; color: white"}
+
+
+
+## Stimuli
+
+**CVCCV words**: Onset + Vowel + Consonant cluster (CC) + Vowel
+
+| **List** | **Condition** | **Syllabification** | **Words** |
+|----------|---------------|---------------------|-----------|
+| List 1   | [Standard (ST)]{style="background-color: #5778a4; color: white"}         | CV-CCV              | MO-PLA, SA-KLO, TI-PLE, DE-KLI | 
+|          | [Deviant word (DW)]{style="background-color: #e49444; color: white"}     | CVC-CV              | MOP-LA, SAK-LO, TIP-LE, DEK-LI | 
+|          | [Deviant syllable (DS)]{style="background-color: #6a9f58; color: white"} | CVC                 | MOP, SAK, TIP, DEK             |
+| List 2   | [Standard (ST)]{style="background-color: #5778a4; color: white"}         | CV-CCV              | MO-KLA, SA-PLO, TI-KLE, DE-PLI |
+|          | [Deviant word (DW)]{style="background-color: #e49444; color: white"}     | CVC-CV              | MOK-LA, SAP-LO, TIK-LE, DEP-LI |
+|          | [Deviant syllable (DS)]{style="background-color: #6a9f58; color: white"} | CVC                 | MOK, SAP, TIK, DEP             |
+: Stimuli lists. {#tbl-stimuli}
+
+## Stimuli
+
+* Synthesised using MBROLA  (`it4` voice) (*pymbrola* Python package)
+* 25 ms pause between syllables
+* Constant prosody: 200 Hz F0
+* Manually removed offset voicing from CVC syllables (Praat)
+
+## Block design
+
+Bigger effect sizes [e.g., @abboub2016prosodic; @mahmoudzadeh2013syllabic].
+
+Inspired by Mahmoudzadeh et al. (2013): block *oddball* paradigm.
+
+::: box
+Blocks > Trials > Words
+:::
+
+## Block design
+
+### Standard (ST) block
+
+![](img/st-block.png)
+
+## Block design
+
+### Deviant word (DW) block
+
+![](img/dw-block.png)
+
+## Block design
+
+### Deviant syllable (DS) block
+
+![](img/ds-block.png)
+
+## Block design
+
+![](img/design.jpg)
 
 
 ## Participants
@@ -132,7 +198,7 @@ participants <- read_csv2(here("data", "participants.csv"), show_col_types = FAL
 ```
 
 * Healthy, full term neonates.^[Last Apgar score $\geq$ 9, $\geq$ 37 gestation weeks, $\geq$ 2,700g birth weight.]
-* Born at the Àrea de Maternitat form Hospital Sant Joan de Déu (Barcelona), tested in their room.
+* Born at the Àrea de la Dona from Hospital Sant Joan de Déu (Barcelona), tested in their room.
 
 ```{r}
 #| label: fig-participants
@@ -157,15 +223,19 @@ participants_plot_data <- read_csv2(here("data", "participants.csv"), show_col_t
 
 ggplot(participants_plot_data, aes(age)) +
   geom_dots(layout = "weave", na.rm = TRUE, fill = clrs[1], colour = "white") +
-  geom_vline(xintercept = mean(participants_plot_data$age, na.rm = TRUE, colour = "black", linewidth = 2)) +
+  geom_vline(xintercept = mean(participants_plot_data$age, na.rm = TRUE, colour = "#e49444", linewidth = 2)) +
   labs(title = "Age (hours)") +
   ggplot(participants_plot_data, aes(birth_weight)) +
-  geom_dots(layout = "weave", na.rm = TRUE, fill = clrs[1], colour = "white") +
-  geom_vline(xintercept = mean(participants_plot_data$birth_weight, na.rm = TRUE, colour = "black", linewidth = 2)) +
+  geom_dots(layout = "weave", na.rm = TRUE, fill = clrs[1]) +
+  geom_vline(xintercept = 2700, linetype = "dotted", colour = "grey") +
+  geom_vline(xintercept = mean(participants_plot_data$birth_weight, na.rm = TRUE, colour = "#e49444", linewidth = 2)) +
   labs(title = "Birth weight (g)") +
-  ggplot(participants_plot_data, aes(gest_weeks)) +
-  geom_dots(na.rm = TRUE, fill = clrs[1], colour = "white") +
-  geom_vline(xintercept = mean(participants_plot_data$gest_weeks, na.rm = TRUE, colour = "black", linewidth = 2)) +
+  participants_plot_data |>
+  count(gest_weeks) |>
+  ggplot(aes(gest_weeks, n)) +
+  geom_col(na.rm = TRUE, fill = clrs[1], colour = "white") +
+  geom_vline(xintercept = mean(participants_plot_data$gest_weeks, na.rm = TRUE, colour = "#e49444", linewidth = 2)) +
+  geom_vline(xintercept = 37, linetype = "dotted", colour = "grey") +
   labs(title = "Gestation weeks") &
   plot_layout() &
   theme(
@@ -208,32 +278,6 @@ excluded <- participants |>
 
 ## Testing setup and procedure
 
-## Stimuli
-
-**CVCCV words**: Onset + Vowel + Consonant cluster (CC) + Vowel
-
-| **List**   | **Syllabification** | **Words**                      |
-|------------|---------------------|--------------------------------|
-| List 1     | [ST (CV-CCV)]{style="background-color: #5778a4; color: white"}         | MO-PLA, SA-KLO, TI-PLE, DE-KLI | 
-|            | [DW (CVC-CV)]{style="background-color: #e49444; color: white"}         | MOP-LA, SAK-LO, TIP-LE, DEK-LI | 
-|            | [DS (CVC)]{style="background-color: #6a9f58; color: white"}            | MOP, SAK, TIP, DEK             |
-| List 2     | [ST (CV-CCV)]{style="background-color: #5778a4; color: white"}         | MO-KLA, SA-PLO, TI-KLE, DE-PLI |
-|            | [DW (CVC-CV)]{style="background-color: #e49444; color: white"}         | MOK-LA, SAP-LO, TIK-LE, DEP-LI |
-|            | [DS (CVC)]{style="background-color: #6a9f58; color: white"}            | MOK, SAP, TIK, DEP             |
-: Stimuli lists. {#tbl-stimuli}
-
-## Stimuli
-
-* Synthesised using MBROLA  (`it4` voice) (*pymbrola* Python package)
-* 25 ms pause between syllables
-* Constant prosody: 200 Hz F0
-* Manually removed offset voicing from CVC syllables (Praat)
-
-## Block design
-
-![](assets/design.jpg)
-
-
 ## Data analysis
 
 MNE-NIRS (Python):
@@ -252,26 +296,26 @@ MNE-NIRS (Python):
 Haemodynamic response averaged across blocks, channels, and participants.
 
 [HbO]{style="background-color: #d1615d; color: white"} [HbR]{style="background-color: #5778a4; color: white"}
-![](assets/evoked-condition.png)
+![](img/evoked-condition.png)
 
 # Results
 
 Haemodynamic response averaged across blocks, channels, and participants.
 
 [ST]{style="background-color: #5778a4; color: white"} [DW]{style="background-color: #e49444; color: white"} [DS]{style="background-color: #6a9f58; color: white"}
-![](assets/evoked-chromo.png)
+![](img/evoked-chromo.png)
 
 # Results
 
 Haemodynamic response averaged across blocks and participants.
 
-![](assets/evoked-topo-hbo.png)
+![](img/evoked-topo-hbo.png)
 
 # Results
 
 Haemodynamic response averaged across blocks and participants.
 
-![](assets/evoked-spatial.png)
+![](img/evoked-spatial.png)
 
 
 # Discussion
@@ -292,7 +336,7 @@ Next steps:
   - Waveform analysis: Bayesian GAMMs
   - Summary statistics: Peak amplitude, AUC, time-to-peak
 
-## {background-image="assets/thanks.png"}
+## {background-image="img/thanks.png"}
 
 # Appendix
 

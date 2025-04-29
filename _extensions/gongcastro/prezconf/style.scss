@@ -37,7 +37,9 @@ $code-block-border-color: $lightgrey;
 // layout;
 $presentation-heading-line-height: 1;
 $h1-margin-bottom: 20%;
-$h1-font-size: 40px;
+$h1-font-size: 45px;
+$h2-font-size: 40px;
+$h3-font-size: 35px;
 
 /*-- scss:rules --*/
 
@@ -210,6 +212,18 @@ strong {
       color: grey;
       text-align: right;
     }
+  }
+
+  h1 {
+    font-size: $h1-font-size;
+  }
+
+  h2 {
+    font-size: $h2-font-size;
+  }
+
+  h2 {
+    font-size: $h3-font-size;
   }
 
   h1,

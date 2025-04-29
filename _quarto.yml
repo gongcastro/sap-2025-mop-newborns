@@ -16,17 +16,11 @@ format:
     github: gongcastro
   pptx: default
 
-author:
-  - name: "Gonzalo García-Castro"
-    orcid: 0000-0002-8553-4209
-    institute: "Neurodevelopment and Comparative Cognition group"
-
 echo: false
 warning: false
 fig-dpi: 800
 
-bibliography: assets/references.bib
-cls: assets/apa7.csl
+bibliography: references.bib
 scrollable: true
 show-slide-number: all
 slide-number: c
