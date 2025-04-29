@@ -57,6 +57,7 @@ Pre-term infants (28-32 gw) discriminate syllables [@mahmoudzadeh2013syllabic]
 
 ## Syllabic structure
 
+<br>
 
 |Structure |Onset  |Nucleus  |Coda  |
 |----------|:-----:|:-------:|:----:|
@@ -164,6 +165,26 @@ Newborns sometimes rely exclusively on 1st syllables [@flo2022sleeping]
 [mop.pla]{style="background-color: #e49444; color: white"} $\neq$ [mop]{style="background-color: #6a9f58; color: white"}
 :::
 
+## Stimuli
+
+**CVCCV words**: Onset + Vowel + Consonant cluster (CC) + Vowel
+
+| **List** | **Type** | **Structure** | **Words** |
+|----------|---------------|---------------------|-----------|
+| 1   | [MOP+]{style="background-color: #5778a4; color: white"} | CV-CCV              | MO-PLA, SA-KLO, TI-PLE, DE-KLI | 
+|          | [MOP-]{style="background-color: #e49444; color: white"}  | CVC-CV              | MOP-LA, SAK-LO, TIP-LE, DEK-LI | 
+|          | [MOP- (1st)]{style="background-color: #6a9f58; color: white"} | CVC                 | MOP, SAK, TIP, DEK             |
+| 2   | [MOP+]{style="background-color: #5778a4; color: white"}         | CV-CCV              | MO-KLA, SA-PLO, TI-KLE, DE-PLI |
+|          | [MOP-]{style="background-color: #e49444; color: white"}     | CVC-CV              | MOK-LA, SAP-LO, TIK-LE, DEP-LI |
+|          | [MOP- (1st)]{style="background-color: #6a9f58; color: white"} | CVC                 | MOK, SAP, TIK, DEP             |
+: {tbl-colwidths="[4,33, 13, 50]"}
+
+## Stimuli
+
+* Synthesised using MBROLA  (`it4` voice) (*pymbrola* Python package)
+* 25 ms pause between syllables
+* Constant prosody: 200 Hz F0
+* Manually removed offset voicing from CVC syllables (Praat)
 
 ## Task design
 
@@ -175,76 +196,47 @@ Inspired by Mahmoudzadeh et al. (2013): block *oddball* paradigm.
 Blocks > Trials > Words
 :::
 
+- Standard blocks [ST]{style="background-color: #5778a4; color: white"}
+- Deviant word blocks [DW]{style="background-color: #e49444; color: white"}
+- Deviant syllable blocks [DS]{style="background-color: #6a9f58; color: white"}
+
+
 ## Task design
 
-### Standard (ST) block
-
-[MOP+]{style="background-color: #5778a4; color: white"}: mo.pla
+Standard [ST]{style="background-color: #5778a4; color: white"} block: MOP+ (e.g., *mo.pla*)
 
 ![](img/st-block.png)
 
-## Task design
-
-### Deviant word (DW) block
-
-[MOP-]{style="background-color: #e49444; color: white"}: mop-la
-
-![](img/dw-block.png)
-
-## Task design
-
-### Deviant syllable (DS) block
-
-[MOP- 1st syllable]{style="background-color: #6a9f58; color: white"}: mop
-
-![](img/ds-block.png)
-
-## Stimuli
-
-**CVCCV words**: Onset + Vowel + Consonant cluster (CC) + Vowel
-
-| **List** | **Condition** | **Structure** | **Words** |
-|----------|---------------|---------------------|-----------|
-| 1   | [Standard (ST)]{style="background-color: #5778a4; color: white"} | CV-CCV              | MO-PLA, SA-KLO, TI-PLE, DE-KLI | 
-|          | [Deviant word (DW)]{style="background-color: #e49444; color: white"}  | CVC-CV              | MOP-LA, SAK-LO, TIP-LE, DEK-LI | 
-|          | [Deviant syllable (DS)]{style="background-color: #6a9f58; color: white"} | CVC                 | MOP, SAK, TIP, DEK             |
-| 2   | [Standard (ST)]{style="background-color: #5778a4; color: white"}         | CV-CCV              | MO-KLA, SA-PLO, TI-KLE, DE-PLI |
-|          | [Deviant word (DW)]{style="background-color: #e49444; color: white"}     | CVC-CV              | MOK-LA, SAP-LO, TIK-LE, DEP-LI |
-|          | [Deviant syllable (DS)]{style="background-color: #6a9f58; color: white"} | CVC                 | MOK, SAP, TIK, DEP             |
-: {tbl-colwidths="[5,32, 13, 50]"}
-
-## Stimuli
-
-* Synthesised using MBROLA  (`it4` voice) (*pymbrola* Python package)
-* 25 ms pause between syllables
-* Constant prosody: 200 Hz F0
-* Manually removed offset voicing from CVC syllables (Praat)
-
-## Block design
-
-![](img/design.jpg)
-
-
-::: columns
-:::: column
 ```{r}
 #| label: audio-st-block
 html_tag_audio("sounds/st-block.wav")
 ```
-::::
-:::: column
+
+## Task design
+
+Deviant word [DW]{style="background-color: #e49444; color: white"} block: MOP- (e.g., *mop.la*)
+
+![](img/dw-block.png)
+
 ```{r}
 #| label: audio-dw-block
 html_tag_audio("sounds/dw-block.wav")
 ```
-::::
-:::: column
+## Task design
+
+Deviant syllable [DS]{style="background-color: #6a9f58; color: white"} block: MOP- 1st syllable (e.g., *mop*)
+
+![](img/ds-block.png)
+
 ```{r}
 #| label: audio-ds-block
 html_tag_audio("sounds/ds-block.wav")
 ```
-::::
-:::
+
+## Task design
+
+![](img/design.jpg)
+
 
 ## Participants
 
@@ -254,8 +246,7 @@ participants <- read_csv2(here("data", "participants.csv"), show_col_types = FAL
   mutate(date_test = as_date(date_test, format = "%Y-%m-%dT%H:%M"))
 ```
 
-* Healthy, full term neonates.^[Last Apgar score $\geq$ 9, $\geq$ 37 gestation weeks, $\geq$ 2,700g birth weight.]
-* Born and tested at the Àrea de la Dona from Hospital Sant Joan de Déu (Barcelona).
+* Healthy, full term neonates.^[Last Apgar score $\geq$ 9, $\geq$ 37 gestation weeks, $\geq$ 2,700g birth weight.] from Àrea de la Dona from Hospital Sant Joan de Déu (Barcelona).
 * Testing in the crib:
   - Capping between 2 people
   - Hands-on monitoring of the newborn and placement of the cap.
@@ -266,19 +257,16 @@ participants <- read_csv2(here("data", "participants.csv"), show_col_types = FAL
 
 ## Procedure
 
-### Attrition
+Attrition:
 
-**Crying/fussy**
-
-* Neonate gets bothered by the cap
-* Neonate is too awake
-* Neonate cries too much (fussiness)
-
-**Other**
-
-* Bad caping due to neonate’s position
-* Parental interference
-* Background noise
+- **Crying/fussy**
+    * Neonate gets bothered by the cap
+    * Neonate is too awake
+    * Neonate cries too much (fussiness)
+- **Other**
+    * Bad caping due to neonate’s position
+    * Parental interference
+    * Background noise
 
 ## Procedure
 
@@ -291,9 +279,6 @@ participants <- read_csv2(here("data", "participants.csv"), show_col_types = FAL
 
 ![](img/setup-3.jpg)
 :::
-
-
-
 
 
 ## Participants
