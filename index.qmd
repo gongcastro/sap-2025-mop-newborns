@@ -249,16 +249,30 @@ participants <- read_csv2(here("data", "participants.csv"), show_col_types = FAL
 ```
 
 * Healthy, full term neonates.^[Last Apgar score $\geq$ 9, $\geq$ 37 gestation weeks, $\geq$ 2,700g birth weight.]
-* Born at the Àrea de la Dona from Hospital Sant Joan de Déu (Barcelona), tested in their room.
-* Baby in the crib:
+* Born and tested at the Àrea de la Dona from Hospital Sant Joan de Déu (Barcelona).
+* Testing in the crib:
   - Capping between 2 people
   - Hands-on monitoring of the newborn and placement of the cap.
-* Baby in parents' arms:
+* Testing in parents' arms:
   - Capping by 1 or 2 people.
   - Not ideal: capping is more challenging.
-* Calibration, then testing
+* Calibration, then testing.
 
+## Procedure
 
+### Attrition
+
+**Crying/fussy**
+
+* Neonate gets bothered by the cap
+* Neonate is too awake
+* Neonate cries too much (fussiness)
+
+**Other**
+
+* Bad caping due to neonate’s position
+* Parental interference
+* Background noise
 
 ## Procedure
 
@@ -266,24 +280,14 @@ participants <- read_csv2(here("data", "participants.csv"), show_col_types = FAL
 
 ## Procedure
 
-::: {layout="[[1,2], [1]]"}
+::: {layout-ncol=2}
 ![](img/setup-1.jpg)
-
-![](img/setup-2.jpg)
 
 ![](img/setup-3.jpg)
 :::
 
-## Procedure
 
-### Attrition
 
-* Neonate gets botherd by the cap
-* Neonate is too awake
-* Neonate cries too much (fussiness)
-* Bad caping due to neonate’s position
-* Parental interference
-* Background noise
 
 
 ## Participants

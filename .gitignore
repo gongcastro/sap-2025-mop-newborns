@@ -1,2 +1,6 @@
 /.quarto/
 docs/
+index_files/
+site_libs/
+*.png
+*.scss
