@@ -250,19 +250,6 @@ participants <- read_csv2(here("data", "participants.csv"), show_col_types = FAL
 
 * Healthy, full term neonates.^[Last Apgar score $\geq$ 9, $\geq$ 37 gestation weeks, $\geq$ 2,700g birth weight.]
 * Born at the Àrea de la Dona from Hospital Sant Joan de Déu (Barcelona), tested in their room.
-
-
-
-::: {.notes}
-- We will run an experimental series that involves neonates and infants
-- Neonates will be tested using fNIRS, while infants will be tested using fNIRS and behavioural tasks (like the HeadTurn Preference Procedure)
-- I will focus on the fNIRS testing of neonates and infants, as they follow the same task design
-- Ideally, we'd like to test up to 50 participants per experiment, although power analysis is pending
-- Most of our participants will have a Catalan and/or Spanish background
-:::
-
-## Procedure:
-
 * Baby in the crib:
   - Capping between 2 people
   - Hands-on monitoring of the newborn and placement of the cap.
@@ -270,6 +257,8 @@ participants <- read_csv2(here("data", "participants.csv"), show_col_types = FAL
   - Capping by 1 or 2 people.
   - Not ideal: capping is more challenging.
 * Calibration, then testing
+
+
 
 ## Procedure
 
