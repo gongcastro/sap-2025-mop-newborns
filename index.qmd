@@ -1,4 +1,5 @@
-```{r setup}
+```{r}
+#| label: setup
 library(tibble)
 library(tidyr)
 library(ggplot2)
@@ -221,16 +222,19 @@ Blocks > Trials > Words
 ::: columns
 :::: column
 ```{r}
+#| label: audio-st-block
 html_tag_audio("sounds/st-block.wav")
 ```
 ::::
 :::: column
 ```{r}
+#| label: audio-dw-block
 html_tag_audio("sounds/dw-block.wav")
 ```
 ::::
 :::: column
 ```{r}
+#| label: audio-ds-block
 html_tag_audio("sounds/ds-block.wav")
 ```
 ::::
