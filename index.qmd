@@ -179,7 +179,7 @@ Blocks > Trials > Words
 
 ### Standard (ST) block
 
-[MOP+]{style="background-color: #5778a4; color: white"}
+[MOP+]{style="background-color: #5778a4; color: white"}: mo.pla
 
 ![](img/st-block.png)
 
@@ -187,7 +187,7 @@ Blocks > Trials > Words
 
 ### Deviant word (DW) block
 
-[MOP-]{style="background-color: #e49444; color: white"}
+[MOP-]{style="background-color: #e49444; color: white"}: mop-la
 
 ![](img/dw-block.png)
 
@@ -195,7 +195,7 @@ Blocks > Trials > Words
 
 ### Deviant syllable (DS) block
 
-[MOP- 1st syllable]{style="background-color: #6a9f58; color: white"}
+[MOP- 1st syllable]{style="background-color: #6a9f58; color: white"}: mop
 
 ![](img/ds-block.png)
 
@@ -219,10 +219,6 @@ Blocks > Trials > Words
 * 25 ms pause between syllables
 * Constant prosody: 200 Hz F0
 * Manually removed offset voicing from CVC syllables (Praat)
-
-
-
-
 
 ## Block design
 
