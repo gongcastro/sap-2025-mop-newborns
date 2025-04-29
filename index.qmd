@@ -43,7 +43,7 @@ html_tag_audio <- function(file, type = c("wav")) {
 
 Newborns (and adults) preferentially chunk the speech signal into [syllable-sized units]{style="background-color: #e3e1e1;"} [e.g., @bijeljac19934; @flo2022sleeping; @luo2007phase; @jusczyk1987representation; @bertoncini1988investigation]
 
-Pre-term infants (28-32 gestational weeks) discriminate different syllables [@mahmoudzadeh2013syllabic]
+Pre-term infants (28-32 gw) discriminate syllables [@mahmoudzadeh2013syllabic]
 
 ![From @flo2022sleeping.](img/entrainment.png)
 
@@ -165,27 +165,6 @@ Newborns sometimes rely exclusively on 1st syllables [@flo2022sleeping]
 :::
 
 
-## Stimuli
-
-**CVCCV words**: Onset + Vowel + Consonant cluster (CC) + Vowel
-
-| **List** | **Condition** | **Structure** | **Words** |
-|----------|---------------|---------------------|-----------|
-| 1   | [Standard (ST)]{style="background-color: #5778a4; color: white"} | CV-CCV              | MO-PLA, SA-KLO, TI-PLE, DE-KLI | 
-|          | [Deviant word (DW)]{style="background-color: #e49444; color: white"}  | CVC-CV              | MOP-LA, SAK-LO, TIP-LE, DEK-LI | 
-|          | [Deviant syllable (DS)]{style="background-color: #6a9f58; color: white"} | CVC                 | MOP, SAK, TIP, DEK             |
-| 2   | [Standard (ST)]{style="background-color: #5778a4; color: white"}         | CV-CCV              | MO-KLA, SA-PLO, TI-KLE, DE-PLI |
-|          | [Deviant word (DW)]{style="background-color: #e49444; color: white"}     | CVC-CV              | MOK-LA, SAP-LO, TIK-LE, DEP-LI |
-|          | [Deviant syllable (DS)]{style="background-color: #6a9f58; color: white"} | CVC                 | MOK, SAP, TIK, DEP             |
-: {tbl-colwidths="[5,31, 14, 50]"}
-
-## Stimuli
-
-* Synthesised using MBROLA  (`it4` voice) (*pymbrola* Python package)
-* 25 ms pause between syllables
-* Constant prosody: 200 Hz F0
-* Manually removed offset voicing from CVC syllables (Praat)
-
 ## Block design
 
 Bigger effect sizes [e.g., @abboub2016prosodic; @mahmoudzadeh2013syllabic].
@@ -200,11 +179,15 @@ Blocks > Trials > Words
 
 ### Standard (ST) block
 
+[MOP+]{style="background-color: #5778a4; color: white"}
+
 ![](img/st-block.png)
 
 ## Block design
 
 ### Deviant word (DW) block
+
+[MOP-]{style="background-color: #e49444; color: white"}
 
 ![](img/dw-block.png)
 
@@ -212,7 +195,34 @@ Blocks > Trials > Words
 
 ### Deviant syllable (DS) block
 
+[MOP- 1st syllable]{style="background-color: #6a9f58; color: white"}
+
 ![](img/ds-block.png)
+
+## Stimuli
+
+**CVCCV words**: Onset + Vowel + Consonant cluster (CC) + Vowel
+
+| **List** | **Condition** | **Structure** | **Words** |
+|----------|---------------|---------------------|-----------|
+| 1   | [Standard (ST)]{style="background-color: #5778a4; color: white"} | CV-CCV              | MO-PLA, SA-KLO, TI-PLE, DE-KLI | 
+|          | [Deviant word (DW)]{style="background-color: #e49444; color: white"}  | CVC-CV              | MOP-LA, SAK-LO, TIP-LE, DEK-LI | 
+|          | [Deviant syllable (DS)]{style="background-color: #6a9f58; color: white"} | CVC                 | MOP, SAK, TIP, DEK             |
+| 2   | [Standard (ST)]{style="background-color: #5778a4; color: white"}         | CV-CCV              | MO-KLA, SA-PLO, TI-KLE, DE-PLI |
+|          | [Deviant word (DW)]{style="background-color: #e49444; color: white"}     | CVC-CV              | MOK-LA, SAP-LO, TIK-LE, DEP-LI |
+|          | [Deviant syllable (DS)]{style="background-color: #6a9f58; color: white"} | CVC                 | MOK, SAP, TIK, DEP             |
+: {tbl-colwidths="[5,32, 13, 50]"}
+
+## Stimuli
+
+* Synthesised using MBROLA  (`it4` voice) (*pymbrola* Python package)
+* 25 ms pause between syllables
+* Constant prosody: 200 Hz F0
+* Manually removed offset voicing from CVC syllables (Praat)
+
+
+
+
 
 ## Block design
 
@@ -243,7 +253,7 @@ html_tag_audio("sounds/ds-block.wav")
 ## Participants
 
 ```{r}
-#| label: import-paricipants
+#| label: import-participants
 participants <- read_csv2(here("data", "participants.csv"), show_col_types = FALSE) |>
   mutate(date_test = as_date(date_test, format = "%Y-%m-%dT%H:%M"))
 ```
@@ -308,16 +318,15 @@ excluded <- participants |>
   summarise(across(starts_with("exc_"), sum))
 ```
 
-* **Pilot** (`r pilot_dates$date_test_1[1]`--`r pilot_dates$date_test_2[1]`): `r sum(participants$pilot, na.rm = TRUE)`: Participants.
-* **Experiment** (`r pilot_dates$date_test_1[1]`--now): `r sum(!participants$pilot)`.
-    - Excluded (< 10 min.): `r excluded$exc_crying` crying, `r excluded$exc_capping` bad capping.
-    - Provided valid data (>= 2 blocks per condition): `r sum(!participants$pilot & participants$include)-1`
-    - Presenting data from 
+* **Pilot** (`r pilot_dates$date_test_1[1]`--`r pilot_dates$date_test_2[1]`): `r sum(participants$pilot, na.rm = TRUE)` participants.
+* **Experiment** (`r pilot_dates$date_test_1[1]`--now): `r sum(!participants$pilot)` participants.
+    - Excluded ($\lt$ 10 min.): `r excluded$exc_crying` crying, `r excluded$exc_capping` bad capping.
+    - Provided valid data ($\geq$ 2 blocks per condition): `r sum(!participants$pilot & participants$include)-1`
+    - Presenting data from 15 "cleanest" participants.
 
 
 ```{r}
 #| label: fig-participants
-#| fig-cap: Participant information.
 #| fig-width: 7
 #| fig-height: 2
 
@@ -362,15 +371,16 @@ ggplot(participants_plot_data, aes(age)) +
 
 ## Montage
 
+From Abboub et al. (2016):
+
 ::: {layout-nrow=2}
-![](img/left.jpeg)
+![](img/left.jpeg){width=300}
 
-![](img/right.jpeg)
+![](img/right.jpeg){width=300}
 
-![](img/anterior.jpeg)
+![](img/anterior.jpeg){width=300}
 
-
-![](img/top.jpeg)
+![](img/top.jpeg){width=300}
 :::
 
 
@@ -383,39 +393,42 @@ MNE-NIRS (Python):
 2) Automatic **channel rejection** based (SCI $\geq$ .80)
 3) **Motion arctifact correction** (TDDR)
 4) Calculate **$\Delta$HbO and $\Delta$HbO** using the modified Beer-Lambert Law
-5) Band-pass **filter** (0.01-1.0 Hz)
+5) Band-pass **filter** (0.01--1.0 Hz)
 6) **Block epoching** (-5 to 30 seconds), baseline correction, linear detrend
 7) **Block averaging**
 8) **Participant rejection** ($\geq$ 2 trials per condition)
 
 # Results
 
-Haemodynamic response averaged across blocks, channels, and participants.
+## Results
+
+HDR averaged across blocks, channels, and participants.
 
 [HbO]{style="background-color: #d1615d; color: white"} [HbR]{style="background-color: #5778a4; color: white"}
+
 ![](img/evoked-condition.png)
 
-# Results
+## Results
 
-Haemodynamic response averaged across blocks, channels, and participants.
+HDR averaged across blocks, channels, and participants.
 
 [ST]{style="background-color: #5778a4; color: white"} [DW]{style="background-color: #e49444; color: white"} [DS]{style="background-color: #6a9f58; color: white"}
 ![](img/evoked-chromo.png)
 
-# Results
+## Results
 
-Haemodynamic response averaged across blocks and participants.
+HDR averaged across blocks and participants.
 
 ![](img/evoked-topo-hbo.png)
 
-# Results
+## Results
 
-Haemodynamic response averaged across blocks and participants.
+HDR response averaged across blocks and participants.
 
 ![](img/evoked-spatial.png)
 
 
-# Discussion
+## Discussion
 
 So far:
 
@@ -423,7 +436,7 @@ So far:
 * fNIRS setup up and running
 * Data processing pipeline almost ready
 
-# Discussion
+## Discussion
 
 Next steps:
 
