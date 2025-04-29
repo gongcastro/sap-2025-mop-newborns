@@ -50,6 +50,8 @@ $h3-font-size: 35px;
     opacity: 0.80;
     margin-top: 0px;
     margin-bottom: 0px;
+    margin-left: 2px;
+    margin-right: 2px;
     font-weight: 500;
     font-family: $font-family-sans-serif;
   }
@@ -60,6 +62,7 @@ $h3-font-size: 35px;
     margin-top: 2%;
     color: black !important;
     font-weight: bolder;
+    vertical-align: center;
   }
 
   #rectangle {
@@ -87,7 +90,7 @@ $h3-font-size: 35px;
   }
 
   .quarto-title-author-name {
-    font-size: 40px;
+    font-size: 30px;
     font-family: $font-family-sans-serif;
   }
 
@@ -149,9 +152,14 @@ $h3-font-size: 35px;
       bottom: 0;
       font-family: $font-family-monospace;
       color: black;
+      margin-top: 2em;
     }
   }
 
+}
+
+.center {
+  text-align: center;
 }
 
 .citation {
@@ -220,9 +228,10 @@ strong {
 
   h2 {
     font-size: $h2-font-size;
+    font-weight: bolder;
   }
 
-  h2 {
+  h3 {
     font-size: $h3-font-size;
   }
 
@@ -255,6 +264,8 @@ aside p,
 .reveal .slide .box {
   margin-top: 1em;
   margin-bottom: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   padding-left: 1em;

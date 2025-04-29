@@ -7,7 +7,7 @@ project:
 title: "Maximal Onset Principle as a cue for syllable detection at birth"
 format:
   prezconf-revealjs:
-    self-contained: true
+    self-contained: false
     from: markdown+emoji
     transition: fade
     progress: true
@@ -15,6 +15,17 @@ format:
     link-external-newwindow: true
     github: gongcastro
   pptx: default
+
+authors:
+  - Gonzalo<br>García-Castro
+  - Laura S.<br>Piracún-García
+  - Chiara<br>Santolin
+
+resources: 
+    - "img/setup.mp4"
+    - "sounds/st-block.mp4"
+    - "sounds/dw-block.mp4"
+    - "sounds/ds-block.mp4"
 
 echo: false
 warning: false
