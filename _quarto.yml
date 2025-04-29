@@ -14,7 +14,6 @@ format:
     preload-iframes: true
     link-external-newwindow: true
     github: gongcastro
-  pptx: default
 
 authors:
   - Gonzalo<br>García-Castro
