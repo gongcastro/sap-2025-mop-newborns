@@ -165,7 +165,7 @@ Newborns sometimes rely exclusively on 1st syllables [@flo2022sleeping]
 :::
 
 
-## Block design
+## Task design
 
 Bigger effect sizes [e.g., @abboub2016prosodic; @mahmoudzadeh2013syllabic].
 
@@ -175,7 +175,7 @@ Inspired by Mahmoudzadeh et al. (2013): block *oddball* paradigm.
 Blocks > Trials > Words
 :::
 
-## Block design
+## Task design
 
 ### Standard (ST) block
 
@@ -183,7 +183,7 @@ Blocks > Trials > Words
 
 ![](img/st-block.png)
 
-## Block design
+## Task design
 
 ### Deviant word (DW) block
 
@@ -191,7 +191,7 @@ Blocks > Trials > Words
 
 ![](img/dw-block.png)
 
-## Block design
+## Task design
 
 ### Deviant syllable (DS) block
 
